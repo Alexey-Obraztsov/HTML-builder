@@ -7,4 +7,6 @@ const stream = fs.createReadStream(link, 'utf-8');
 
 let data = '';
 
-stream.on('data', chunk => console.log(data += chunk));
+stream.on('data', chunk => data += chunk);
+stream.on('end', () => console.log(data));
+stream.on('error', err => console.log('Error: ', err.message));
